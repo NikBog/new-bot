@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 import os
 from models import *
@@ -65,7 +65,7 @@ def user_message(message):
         session.commit()
         next = session.query(Question).filter(Question.id > user.stage).first()
         if(not next):
-            bot.send_message(message.chat.id, "Дякую за спiвбесiду! Ми передзвонимо вам пізніше")
+            bot.send_message(message.chat.id, "Дякую за спiвбесiду! Очікуйте найскорішого дзвіночка")
             return
         bot.send_message(message.chat.id, next.text)
         user.stage = next.id
