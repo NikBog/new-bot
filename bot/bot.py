@@ -65,7 +65,7 @@ def user_message(message):
         session.commit()
         next = session.query(Question).filter(Question.id > user.stage).first()
         if(not next):
-            bot.send_message(message.chat.id, "Дякую за спiвбесiду! Очікуйте найскорішого дзвіночка")
+            bot.send_message(message.chat.id, "Дякую тобі за спiвбесiду! Очікуй найскорішого дзвіночка від нашого HR! Вдалого і продуктивного дня)")
             return
         bot.send_message(message.chat.id, next.text)
         user.stage = next.id
