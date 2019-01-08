@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 from models import *
 import telebot
@@ -63,7 +65,8 @@ def user_message(message):
         session.commit()
         next = session.query(Question).filter(Question.id > user.stage).first()
         if(not next):
-            bot.send_message(message.chat.id, "Thank you! We will call you later")
+            bot.send_message(message.chat.id, "Дякую за спiвбесiду! Ми передзвонимо вам пізніше")
+            return
         bot.send_message(message.chat.id, next.text)
         user.stage = next.id
         session.add(user)
