@@ -42,6 +42,9 @@ def cmd_start(message):
 @bot.message_handler(commands=["reset"])
 def cmd_reset(message):
     user = session.query(User).filter_by(chat_id=message.chat.id).first()
+    if(not user):
+        start(message.chat.id)
+        return
     user.stage = session.query(Question).first().id
     answers = session.query(Answer).filter_by(user_id=user.id).delete()
     # session.delete(answers)
